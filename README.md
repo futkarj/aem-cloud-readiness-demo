@@ -1,7 +1,7 @@
 # Cloud-Ready AEM — 6.5 → AEMaaCS Modernization Demo
 
 Assess and modernize an AEM 6.5 project for AEM as a Cloud Service, **locally, without a cloud sandbox**.
-Write-up and talk track: YOUR-SUPER-SITE-URL/blog/cloud-sdk-without-sandbox
+Write-up and talk track: https://rohit-jain-portfolio.super.site/blog/cloud-sdk-without-sandbox
 
 ## Repo layout (planned)
 ```
