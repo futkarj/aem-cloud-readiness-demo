@@ -1,0 +1,6 @@
+{
+  "guavaCache": [],
+  "oakIndex": [
+    { "file": "ui.apps/src/main/content/jcr_root/_oak_index/legacydemoLucene/.content.xml", "line": 3, "snippet": "jcr:primaryType=\"oak:QueryIndexDefinition\" (custom Lucene index, no -custom-N version suffix)" }
+  ]
+}

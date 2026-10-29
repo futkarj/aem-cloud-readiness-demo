@@ -1,0 +1,11 @@
+#
+# This file contains the filter ACL, and can be customized.
+#
+# By default, it includes the default filter ACL.
+#
+
+$include "./default_filters.any"
+
+# Carried over from ams_publish_filters.any (rules not already in default_filters.any)
+/0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
+/0102 { /type "allow" /extension '(gltf|stl|obj|usdz|glb)' /method "GET" /path "/content/dam/*" }

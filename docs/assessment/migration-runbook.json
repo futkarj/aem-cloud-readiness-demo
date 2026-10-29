@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-10-29 01:46:58",
+  "workspaceRoot": "../../legacy-65-lts",
+  "project": null,
+  "sourceByPattern": {
+    "scheduler": "analyzer",
+    "resourceChangeListener": "analyzer",
+    "event-migration": "analyzer",
+    "assetApi": "analyzer",
+    "replication": "analyzer",
+    "htlLint": "html-scan",
+    "osgiConfig": "config-scan",
+    "vault-package-dependencies": "pom-scan",
+    "lui": "content-scan",
+    "cdw": "content-scan",
+    "templateModernization": "content-scan",
+    "dispatcherConversion": "content-scan",
+    "inputStream": "source-scan",
+    "guavaCache": "llm",
+    "oakIndex": "llm"
+  },
+  "findingsByPattern": {
+    "scheduler": [],
+    "resourceChangeListener": [
+      {
+        "pattern": "resource-change-listener",
+        "file": "core/src/main/java/com/demo/legacy/core/listeners/SimpleResourceListener.java",
+        "line": 33,
+        "snippet": "@Component(service = ResourceChangeListener.class,\n           immediate = true\n)\n@ServiceDescription(\"Demo to listen on changes in the resource tree\")\npublic class SimpleResourceListener implements ResourceChangeListener"
+      }
+    ],
+    "event-migration": [
+      {
+        "pattern": "event-migration",
+        "file": "core/src/main/java/com/demo/legacy/core/legacy/JcrPageEventListener.java",
+        "line": 21,
+        "snippet": "@Component(immediate = true)\npublic class JcrPageEventListener implements EventListener"
+      },
+      {
+        "pattern": "event-migration",
+        "file": "core/src/main/java/com/demo/legacy/core/legacy/ReplicationEventHandler.java",
+        "line": 16,
+        "snippet": "@Component(service = EventHandler.class, immediate = true,\n        property = EventConstants.EVENT_TOPIC + \"=\" + ReplicationAction.EVENT_TOPIC)\npublic class ReplicationEventHandler implements EventHandler"
+      }
+    ],
+    "assetApi": [
+      {
+        "pattern": "asset-manager",
+        "file": "core/src/main/java/com/demo/legacy/core/legacy/DamAssetImporter.java",
+        "line": 23,
+        "snippet": "assetManager.createAsset(path, binary, mimeType, true)"
+      }
+    ],
+    "replication": [
+      {
+        "pattern": "replication",
+        "file": "core/src/main/java/com/demo/legacy/core/legacy/PageActivationService.java",
+        "line": 18,
+        "snippet": "@Component(service = PageActivationService.class)\npublic class PageActivationService"
+      }
+    ],
+    "htlLint": [],
+    "osgiConfig": [],
+    "vault-package-dependencies": [],
+    "lui": [],
+    "cdw": [],
+    "templateModernization": [
+      {
+        "pattern": "templateModernization",
+        "file": "ui.apps/src/main/content/jcr_root/apps/legacydemo/templates/legacy-page/.content.xml",
+        "line": null,
+        "snippet": "static template (cq:Template, custom)",
+        "subType": "custom.static.template",
+        "confidence": "heuristic"
+      }
+    ],
+    "guavaCache": [],
+    "inputStream": [
+      {
+        "pattern": "inputStream",
+        "file": "core/src/main/java/com/demo/legacy/core/legacy/DamAssetImporter.java",
+        "line": 18,
+        "snippet": "public Asset importAsset(ResourceResolver resolver, String path, InputStream binary, String mimeType) {",
+        "kind": "source",
+        "severity": "info",
+        "fix": {
+          "auto": 0,
+          "review": 0,
+          "decision": 0
+        },
+        "sites": [
+          {
+            "line": 18,
+            "snippet": "public Asset importAsset(ResourceResolver resolver, String path, InputStream binary, String mimeType) {",
+            "api": "type reference",
+            "source": "type-only",
+            "categories": [
+              "A"
+            ],
+            "primary": "A",
+            "fix": "none",
+            "severity": "info",
+            "variable": null,
+            "note": "java.io stream type used only as a parameter/return/field type"
+          }
+        ],
+        "informational": true,
+        "confidence": "heuristic"
+      }
+    ],
+    "dispatcherConversion": [
+      {
+        "pattern": "dispatcherConversion",
+        "file": ".",
+        "line": null,
+        "snippet": "mode=ams",
+        "confidence": "heuristic"
+      }
+    ],
+    "oakIndex": [
+      {
+        "pattern": "oakIndex",
+        "file": "ui.apps/src/main/content/jcr_root/_oak_index/legacydemoLucene/.content.xml",
+        "line": 3,
+        "snippet": "jcr:primaryType=\"oak:QueryIndexDefinition\" (custom Lucene index, no -custom-N version suffix)"
+      }
+    ]
+  }
+}

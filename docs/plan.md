@@ -8,7 +8,7 @@ Everything runs on one laptop, outside any cloud sync folder, under `~/dev/conta
 | Runtime | Where | Port | Status |
 |---|---|---|---|
 | AEMaaCS SDK author (2026.1.23963) | `author/` | 4502 | Running; `cloud-ready` deployed |
-| Dispatcher tools 2.0.258 (Docker) | `dispatcher/dispatcher-sdk-2.0.258/` | 8080 | Validator passes on the sample config |
+| Dispatcher tools 2.0.275 (Docker) | `dispatcher/dispatcher-sdk-2.0.275/` | 8080 | `cloud-ready` passes all 3 phases |
 | AEM 6.5 LTS baseline author | `aem-65-lts/` (planned) | 4602 | Not installed: needs a license |
 
 ```bash
@@ -18,8 +18,9 @@ CQ_JVM_OPTS='-server -Xmx4g -Djava.awt.headless=true' ./crx-quickstart/bin/start
 ./crx-quickstart/bin/stop
 
 # Dispatcher: validate a project's config, then run it in front of the SDK author
-cd ~/dev/containers/aem-sdk/dispatcher/dispatcher-sdk-2.0.258
-./bin/validate.sh <project>/dispatcher/src
+cd ~/dev/containers/aem-sdk/dispatcher/dispatcher-sdk-2.0.275
+IMMUTABLE_FILES_UPDATE=false ./bin/validate.sh <project>/dispatcher/src   # without the variable, a mismatch loops on a yes/no prompt
+./bin/update_maven.sh <project>/dispatcher/src                            # sync immutable files to this tools version
 ./bin/docker_run.sh <project>/dispatcher/src host.docker.internal:4502 8080
 ```
 
@@ -42,10 +43,10 @@ cd ~/dev/containers/aem-sdk/dispatcher/dispatcher-sdk-2.0.258
    - Installing AEM 6.5 LTS needs a license (customer name + download ID from Software Distribution).
      The `license.properties` files in the installer folders are the Cloud SDK's generic ones, which are
      not for 6.5 LTS.
-3. **Assess.** Run Best Practices Analyzer on the 6.5 LTS baseline and export the CSV to `docs/bpa-report/`. The
-   report comes from this sample project only; no customer data. Turn the findings into an effort estimate.
-   Back it up with the same build analysers on the legacy packages, and with the open-source migration
-   tools (Repository Modernizer, Dispatcher Converter, Index Converter).
+3. **Assess (done, from code).** No 6.5 LTS license, so no running instance and no BPA. Instead: Adobe's
+   `aem-cloud-service` skills (migration runbook, code-assessment), the build analysers on the legacy `all`
+   package, and the Dispatcher Converter. Results and a coverage score against the 15 planted patterns are in
+   [docs/assessment/](assessment/README.md). BPA stays optional, if a license turns up.
 4. **Modernize.** Port each flagged pattern into `cloud-ready/`, documenting each change in `docs/diffs.md`.
    Deploy to the SDK and re-validate the Dispatcher config.
 5. **Move content.** Content Transfer Tool (`content-transfer.all-3.0.58.zip`) from the baseline. Ingestion
@@ -53,7 +54,8 @@ cd ~/dev/containers/aem-sdk/dispatcher/dispatcher-sdk-2.0.258
    Acceleration Manager.
 
 ## Open questions
-- 6.5 LTS license: needed before the baseline can run, and BPA needs a running instance.
+- 6.5 LTS license: none available, so the baseline never runs. BPA and the Content Transfer Tool need a
+  running instance; the demo covers them with the talk track instead.
 - BPA 2.1.58 is downloaded; confirm it supports 6.5 LTS when it is installed.
 - 6.5 LTS SP3: install on top of the first release (6.6.0) for a realistic, patched baseline.
 - Content Transfer Tool 3.0.58: confirm it supports 6.5 LTS as a source.
