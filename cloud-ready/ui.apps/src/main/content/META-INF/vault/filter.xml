@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/clouddemo/clientlibs"/>
+    <filter root="/apps/clouddemo/components"/>
+    <filter root="/apps/clouddemo/i18n"/>
+    <filter root="/oak:index/diff.index"/>
+</workspaceFilter>
