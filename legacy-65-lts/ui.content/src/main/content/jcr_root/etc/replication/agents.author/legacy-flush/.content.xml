@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Legacy flush agent"
+        jcr:description="LEGACY: custom replication agent; Cloud Service uses Sling Content Distribution"
+        sling:resourceType="cq/replication/components/agent"
+        cq:template="/libs/cq/replication/templates/agent"
+        enabled="false"
+        serializationType="flush"
+        transportUri="http://localhost:8080/dispatcher/invalidate.cache"
+        triggerReceive="true"
+        triggerSpecific="true"/>
+</jcr:root>

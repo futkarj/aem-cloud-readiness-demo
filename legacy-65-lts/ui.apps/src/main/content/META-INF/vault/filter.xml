@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/legacydemo/clientlibs"/>
+    <filter root="/apps/legacydemo/components"/>
+    <filter root="/apps/legacydemo/i18n"/>
+    <filter root="/apps/legacydemo/templates"/>
+    <filter root="/apps/legacydemo/settings"/>
+    <filter root="/oak:index/legacydemoLucene"/>
+</workspaceFilter>

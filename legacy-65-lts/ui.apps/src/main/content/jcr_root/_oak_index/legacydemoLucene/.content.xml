@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:oak="http://jackrabbit.apache.org/oak/ns/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="oak:QueryIndexDefinition"
+    type="lucene"
+    async="[async,nrt]"
+    compatVersion="{Long}2"
+    evaluatePathRestrictions="{Boolean}true"
+    includedPaths="[/content/legacydemo]">
+    <indexRules jcr:primaryType="nt:unstructured">
+        <cq:Page xmlns:cq="http://www.day.com/jcr/cq/1.0" jcr:primaryType="nt:unstructured">
+            <properties jcr:primaryType="nt:unstructured">
+                <promoText jcr:primaryType="nt:unstructured" name="jcr:content/promoText" propertyIndex="{Boolean}true"/>
+            </properties>
+        </cq:Page>
+    </indexRules>
+</jcr:root>

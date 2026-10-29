@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/legacydemo" mode="merge"/>
+    <filter root="/content/legacydemo" mode="merge"/>
+    <filter root="/content/dam/legacydemo" mode="merge">
+        <exclude pattern="/content/dam/legacydemo(/.*)?"/>
+        <include pattern="/content/dam/legacydemo/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/legacydemo/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/legacydemo" mode="merge"/>
+    <filter root="/etc/replication/agents.author/legacy-flush"/>
+    <filter root="/etc/designs/legacydemo"/>
+</workspaceFilter>
